@@ -8,15 +8,22 @@ from datetime import datetime
 class BaseModel():
     """BaseModel - defines all common attributes/methods for other classes."""
     
-    def __init__( self):
+    def __init__(self, *args, **kwargs):
         """__init__ - intantiates attributes"""
+        if kwargs is not None:
+            for key, value in kwargs.items():
+                if key == 'created_at' or key == 'updated_at':
+                    type(self).__name__
+                elif key =='__class__':
+                    del kwargs['__class__']
+                
         self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = self.created_at
         
     def __str__(self):
         """Return the str() representation of the BaseModel instance."""
-        return ("[{}] ({}) {}".format(type(self).__name__,self.id, self.__dict__))
+        return ("[{}] ({}) {}".format(type(self).__name__, self.id, self.__dict__))
         
     def save(self):
         """updates the public instance attribute updated_at with the current datetime"""
