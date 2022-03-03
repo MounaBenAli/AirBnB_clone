@@ -12,11 +12,11 @@ class BaseModel():
 
     def __init__(self, *args, **kwargs):
         """__init__ - intantiates attributes"""
-        if len(kwargs) == 0:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = self.created_at
-        else:
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
+        if kwargs:
             for key, value in kwargs.items():
                 if key == '__class__':
                     continue
@@ -26,6 +26,8 @@ class BaseModel():
                             value, '%Y-%m-%dT%H:%M:%S.%f'))
                 else:
                     setattr(self, key, value)
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         """Return the str() representation of the BaseModel instance."""
@@ -43,7 +45,7 @@ class BaseModel():
 
     def to_dict(self):
         """returns a dictionary with a new key __class__"""
-        new_dict = self.__dict__.copy()
+        new_dict = dict(**self.__dict__)
         new_dict['__class__ '] = type(self).__name__
         new_dict['created_at'] = self.created_at.isoformat()
         new_dict['updated_at'] = self.updated_at.isoformat()
