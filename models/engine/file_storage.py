@@ -1,26 +1,31 @@
 #!/usr/bin/python3
-"""FileStorage Class Module."""
-
+"""
+file storage module
+"""
 import json
 from models.base_model import BaseModel
 
-class FileStorage():
-    """FileStorage - serializes instances toa JSON file
-    and deserializes JSON file to instances"""
-    __file_path = 'file.json'
+
+class FileStorage:
+    """
+    file storage class
+    """
+    __file_path = "file.json"
     __objects = {}
 
-    
-
     def all(self):
-        """ returns the dictionary __objects"""
+        """
+        returns the dictionary __objects of the file
+        """
         return self.__objects
 
     def new(self, obj):
-        """sets in __objects the obj with key <obj class name>.id"""
+        """
+         sets in __objects the obj with key <obj class name>.id
+        """
         if obj:
-            self.__objects["[{}.{}".format(obj.__class__.__name__, obj.id)] = obj
-
+            self.__objects["{}.{}".format(obj.__class__.__name__,
+                                          obj.id)] = obj
 
     def save(self):
         """
@@ -38,8 +43,8 @@ class FileStorage():
         """
         try:
             with open(self.__file_path, "r", encoding="UTF-8") as f:
-                self.__objects = json.load(f)
-            for k, v in  self.__objects.items():
+                obj = json.load(f)
+            for k, v in obj.items():
                 class_name = k.split('.')[0]
                 self.__objects[k] = eval(class_name)(**v)
         except BaseException:
