@@ -8,6 +8,10 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = '(hbnb) '
 
+    def emptyline(self):
+        """an empty line + ENTER shouldn’t execute anything"""
+        pass
+
     def do_quit(self, line):
         return True
 
