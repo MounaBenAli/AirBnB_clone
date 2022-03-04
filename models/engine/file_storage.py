@@ -20,7 +20,7 @@ class FileStorage:
                                           obj.id)] = obj
 
     def save(self):
-        """serializes __objects to the JSON file        """
+        """serializes __objects to the JSON file"""
         my_dic = {}
         for key, value in self.__objects.items():
             my_dic[key] = value.to_dict()
@@ -28,7 +28,7 @@ class FileStorage:
             json.dump(my_dic, f)
 
     def reload(self):
-        """deserializes the JSON file to __objects """
+        """deserializes the JSON file to __objects"""
         try:
             with open(self.__file_path, "r", encoding="UTF-8") as f:
                 obj = json.load(f)
