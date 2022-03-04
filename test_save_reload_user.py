@@ -33,5 +33,5 @@ print(my_state)
 print("__city__")
 my_city = City()
 State.id = ""
-my_city.name ="San Diego"
+my_city.name = "San Diego"
 print(my_city)
