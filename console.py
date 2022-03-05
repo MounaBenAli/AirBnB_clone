@@ -138,6 +138,7 @@ class HBNBCommand(cmd.Cmd):
         print(counter)
 
     def do_quit(self, line):
+        """To exit console"""
         return True
 
     def help_quit(self):
