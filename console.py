@@ -154,6 +154,7 @@ class HBNBCommand(cmd.Cmd):
         by using: <class name>.instance()."""
         args = arg.split(".")
         if len(args) > 1 and args[0] in classes:
+            print("hello")
             if args[1] == "all()":
                 return self.do_all(args[0])
             elif args[1] == "count()":
@@ -165,6 +166,9 @@ class HBNBCommand(cmd.Cmd):
                     ",", "")
                 new_args = replace_args.split()
                 Cname_id = "{} {}".format(args[0], new_args[1])
+                print(Cname_id)
+                print(len(new_args))
+                print(new_args)
                 if new_args[0] == "show":
                     return self.do_show(Cname_id)
                 elif new_args[0] == "destroy":
@@ -172,7 +176,6 @@ class HBNBCommand(cmd.Cmd):
                 elif new_args[0] == "update":
                     if len(new_args) == 4:
                         Cname_id += " " + new_args[2] + " " + new_args[3]
-                        print(Cname_id)
                         return self.do_update(Cname_id)
 
 
