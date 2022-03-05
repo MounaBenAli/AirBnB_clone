@@ -159,14 +159,21 @@ class HBNBCommand(cmd.Cmd):
             elif args[1] == "count()":
                 return self.do_count(args[0])
             else:
-                print(args[1])
-                replace_args = args[1].replace("(", " ").replace(")", "")
+                replace_args = args[1].replace(
+                    "(", " ").replace(
+                    ")", "").replace(
+                    ",", "")
                 new_args = replace_args.split()
                 Cname_id = "{} {}".format(args[0], new_args[1])
                 if new_args[0] == "show":
                     return self.do_show(Cname_id)
                 elif new_args[0] == "destroy":
                     return self.do_destroy(Cname_id)
+                elif new_args[0] == "update":
+                    if len(new_args) == 4:
+                        Cname_id += " " + new_args[2] + " " + new_args[3]
+                        print(Cname_id)
+                        return self.do_update(Cname_id)
 
 
 if __name__ == '__main__':
