@@ -140,6 +140,14 @@ class HBNBCommand(cmd.Cmd):
     def help_EOF(self):
         print("Quit command to exit the program\n")
 
+    def default(self, arg):
+        """retrieve all instances of a class
+        by using: <class name>.instance()."""
+        args = arg.split(".")
+        if len(args) > 1 and args[0] in classes:
+            if args[1] == "all()":
+                return self.do_all(args[0])
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
