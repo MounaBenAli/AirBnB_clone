@@ -128,6 +128,15 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** no instance found **")
 
+    def do_count(self, arg):
+        "Retrieve the number of instances of a given class"
+        args = arg.split()
+        counter = 0
+        for key, value in models.storage.all().items():
+            if key.split(".")[0] == args[0]:
+                counter += 1
+        print(counter)
+
     def do_quit(self, line):
         return True
 
@@ -147,6 +156,8 @@ class HBNBCommand(cmd.Cmd):
         if len(args) > 1 and args[0] in classes:
             if args[1] == "all()":
                 return self.do_all(args[0])
+            elif args[1] == "count()":
+                return self.do_count(args[0])
 
 
 if __name__ == '__main__':
