@@ -158,6 +158,13 @@ class HBNBCommand(cmd.Cmd):
                 return self.do_all(args[0])
             elif args[1] == "count()":
                 return self.do_count(args[0])
+            else:
+                print(args[1])
+                replace_args = args[1].replace("(", " ").replace(")", "")
+                new_args = replace_args.split()
+                Cname_id = "{} {}".format(args[0], new_args[1])
+                if new_args[0] == "show":
+                    return self.do_show(Cname_id)
 
 
 if __name__ == '__main__':
