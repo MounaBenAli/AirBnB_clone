@@ -165,6 +165,8 @@ class HBNBCommand(cmd.Cmd):
                 Cname_id = "{} {}".format(args[0], new_args[1])
                 if new_args[0] == "show":
                     return self.do_show(Cname_id)
+                elif new_args[0] == "destroy":
+                    return self.do_destroy(Cname_id)
 
 
 if __name__ == '__main__':
