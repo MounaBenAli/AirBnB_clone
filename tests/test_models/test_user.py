@@ -17,9 +17,9 @@ from models.__init__ import storage
 from models.user import User
 
 
-
 class Test_User_Docs(unittest.TestCase):
     """Test documentation"""
+
     def test_doc(self):
         self.assertIsNotNone(User.__doc__)
 
@@ -29,17 +29,17 @@ class Test_User_Docs(unittest.TestCase):
         p = style.check_files(['models/user.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
 
+
 class Test_User_All(unittest.TestCase):
     """Tests for User"""
 
     def test_email(self):
         """Test User email"""
         pass
-    
+
     def test_password(self):
         """Test User password"""
         pass
-
 
     def test_first_name(self):
         """Test User first name"""
@@ -52,4 +52,3 @@ class Test_User_All(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    

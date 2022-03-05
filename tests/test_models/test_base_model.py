@@ -18,6 +18,7 @@ from models.__init__ import storage
 
 class Test_BaseModel_Docs(unittest.TestCase):
     """Test documentation"""
+
     def test_doc(self):
         self.assertIsNotNone(BaseModel.__doc__)
         self.assertIsNotNone(BaseModel.__init__.__doc__)
@@ -30,14 +31,15 @@ class Test_BaseModel_Docs(unittest.TestCase):
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/base_model.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
-        
+
+
 class Test_BaseModel_All(unittest.TestCase):
     """Tests for BaseModel"""
 
     def init(self):
         """Test instantiation"""
         pass
-    
+
     def test_save(self):
         """Test save()"""
         pass
@@ -53,4 +55,3 @@ class Test_BaseModel_All(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    

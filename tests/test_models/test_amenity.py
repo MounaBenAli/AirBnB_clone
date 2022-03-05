@@ -18,10 +18,9 @@ from models.user import User
 from models.amenity import Amenity
 
 
-
-
 class Test_Amenity_Docs(unittest.TestCase):
     """Test documentation"""
+
     def test_doc(self):
         self.assertIsNotNone(Amenity.__doc__)
 
@@ -30,6 +29,7 @@ class Test_Amenity_Docs(unittest.TestCase):
         style = pep8.StyleGuide(quiet=True)
         p = style.check_files(['models/amenity.py'])
         self.assertEqual(p.total_errors, 0, "fix pep8")
+
 
 class Test_Amenity_All(unittest.TestCase):
     """Tests for Amenity"""
@@ -41,4 +41,3 @@ class Test_Amenity_All(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    
