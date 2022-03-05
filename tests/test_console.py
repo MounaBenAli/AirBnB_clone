@@ -26,7 +26,6 @@ class Test_Console_Docs(unittest.TestCase):
         self.assertIsNotNone(HBNBCommand.__doc__)
         self.assertIsNotNone(HBNBCommand.emptyline.__doc__)
         self.assertIsNotNone(HBNBCommand.do_quit.__doc__)
-        self.assertIsNotNone(HBNBCommand.do_EOF.__doc__)
         self.assertIsNotNone(HBNBCommand.do_create.__doc__)
         self.assertIsNotNone(HBNBCommand.do_show.__doc__)
         self.assertIsNotNone(HBNBCommand.do_destroy.__doc__)
