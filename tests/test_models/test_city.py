@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""unittests for user.py.
+"""unittests for city.py.
 
 Unittest classes:
     Test_City_Docs
